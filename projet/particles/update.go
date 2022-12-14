@@ -5,4 +5,5 @@ package particles
 // 60 fois par seconde (de manière régulière) par la fonction principale du
 // projet.
 // C'est à vous de développer cette fonction.
-func (s *System) Update() {}
+func (s *System) Update() {
+}
