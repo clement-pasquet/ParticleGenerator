@@ -2,9 +2,8 @@ package particles
 
 import (
 	"container/list"
-	"project-particles/config"
 	"fmt"
-	"math/rand"
+	"project-particles/config"
 )
 
 // NewSystem est une fonction qui initialise un système de particules et le
@@ -14,19 +13,18 @@ import (
 // centre de l'écran.
 func NewSystem() System {
 	l := list.New()
-	
+
 	fmt.Println(l)
-	
+
 	//
 	l.PushFront(&Particle{
 		PositionX: float64(config.General.WindowSizeX) / 2,
 		PositionY: float64(config.General.WindowSizeY) / 2,
-		ScaleX: 10,
-		ScaleY: 10,										//Partie à remplacer
-		ColorRed: float64(rand.Intn(255)), ColorGreen: float64(rand.Intn(255)), ColorBlue: float64(rand.Intn(255)),
-		Opacity: 1,
-		SpawnRate:config.General.SpawnRate,
+		ScaleX:    10, ScaleY: 10, //Partie à remplacer
+		ColorRed: config.General.ColorRed / 255, ColorGreen: config.General.ColorGreen / 255, ColorBlue: config.General.ColorBlue / 255,
+		Opacity:   1,
+		SpawnRate: config.General.SpawnRate,
 	})
-	
+
 	return System{Content: l}
 }
