@@ -16,12 +16,13 @@ type Config struct {
 	RandomSpawn              bool
 	SpawnX, SpawnY           int
 	SpawnRate                float64
-	ScaleX					 float64
-	ScaleY					 float64
-	Opacity					 float64
-	ColorRed				 float64
-	ColorBlue				 float64
-	ColorGreen				 float64
+	ScaleX                   float64
+	ScaleY                   float64
+	Opacity                  float64
+	ColorRed                 float64
+	ColorBlue                float64
+	ColorGreen               float64
+	Velocity                 float64
 }
 
 var General Config

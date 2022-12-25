@@ -19,5 +19,5 @@ type Particle struct {
 	ScaleX, ScaleY                  float64
 	ColorRed, ColorGreen, ColorBlue float64
 	Opacity                         float64
-	SpawnRate						float64
+	SpeedX, SpeedY                  float64
 }
