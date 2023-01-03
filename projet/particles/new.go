@@ -52,6 +52,7 @@ func NewSystem() System {
 			Opacity: config.General.Opacity,
 			SpeedX:  speedX,
 			SpeedY:  speedY,
+			LifeSpan:1,
 		})
 	}
 

@@ -15,14 +15,17 @@ import (
 var nb float64
 
 func (s *System) Update() {
-	var ele *Particle
-	var myList *list.List = s.Content
+	var maParticule *Particle 
+	var myList *list.List = s.Content // Ma Liste de particules présent à l'écran
 	fmt.Println(myList.Len())
 	for e := myList.Front(); e != nil; e = e.Next() {
-		ele = e.Value.(*Particle)
-		ele.PositionX = ele.PositionX + ele.SpeedX
-		ele.PositionY = ele.PositionY + ele.SpeedY
-	}
+		maParticule = e.Value.(*Particle)
+
+		maParticule.PositionX = maParticule.PositionX + maParticule.SpeedX
+		maParticule.PositionY = maParticule.PositionY + maParticule.SpeedY + float64(maParticule.LifeSpan)/10
+		maParticule.LifeSpan = maParticule.LifeSpan +1
+
+	}	
 	var a float64 = config.General.SpawnRate
 	nb = nb + a - float64(int(a))
 	if nb > 1 {
@@ -33,7 +36,7 @@ func (s *System) Update() {
 
 }
 
-func createNParticles(nb int, l *list.List) *list.List {
+func createNParticles(nb int, l *list.List) *list.List { 
 	for i := 0; i < nb; i++ {
 		var posX float64 = float64(config.General.SpawnX)
 		var posY float64 = float64(config.General.SpawnY)

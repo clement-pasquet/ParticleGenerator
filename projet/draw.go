@@ -3,7 +3,7 @@ package main
 import (
 	"project-particles/assets"
 	"project-particles/particles"
-
+	"project-particles/config"
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
@@ -22,6 +22,10 @@ func (g *game) Draw(screen *ebiten.Image) {
 			options.GeoM.Translate(p.PositionX, p.PositionY)
 			options.ColorM.Scale(p.ColorRed, p.ColorGreen, p.ColorBlue, p.Opacity)
 			screen.DrawImage(assets.ParticleImage, &options)
+			if config.General.WindowSizeX < int(p.PositionX) || p.PositionX< -10 || config.General.WindowSizeY<int(p.PositionY){
+				g.system.Content.Remove(e)
+		}
+		
 		}
 	}
 
