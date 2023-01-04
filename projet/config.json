@@ -7,8 +7,8 @@
 	"InitNumParticles": 50,
 	"RandomSpawn": false,
 	"SpawnX": 640,
-	"SpawnY": 360,
-	"SpawnRate": 200,
+	"SpawnY": 240,
+	"SpawnRate": 1000,
 	"ColorRed": 1,
 	"ColorGreen": 1 ,
 	"ColorBlue": 1,
@@ -16,8 +16,9 @@
 	"ScaleY": 0.0175,
 	"Opacity": 1,
 	"Velocity": 5,
-	"Margin": 20,
+	"Gravity": 0.05,
+	"Margin": 100,
 	"Flag": 6,
-	"LifeSpanMax":2
+	"LifeSpanMax":0
 }
 

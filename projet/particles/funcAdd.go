@@ -208,9 +208,28 @@ func setColor(p *Particle) {
 				p.ColorGreen=Allemagne[2][1]/255
 				p.ColorBlue =Allemagne[2][2]/255
 			}
-	}
-	
+		case 8:
+			//JAPON
+			var a float64 = math.Sqrt(puissance2((p.PositionX-float64(config.General.WindowSizeX)/2))+puissance2((p.PositionY-float64(config.General.WindowSizeY)/2)))
+			p.ColorRed=blanc[0]/255
+			p.ColorGreen=blanc[1]/255
+			p.ColorBlue =blanc[2]/255
+			if  a<150{
+				p.ColorRed=r1[0]/255
+				p.ColorGreen=r1[1]/255
+				p.ColorBlue =r1[2]/255
+			}		
+	}		
+}
+
+func IsOutOfView(e *list.Element,p *Particle,l *list.List) bool {
+	if p.PositionX < -config.General.Margin || p.PositionX > float64(config.General.WindowSizeX) + config.General.Margin || p.PositionY > float64(config.General.WindowSizeY) + config.General.Margin {
 		
-			
-			
+		
+		p.PositionX = float64(config.General.WindowSizeX) + 500
+		p.Opacity = 0
+		go l.Remove(e) 
+		return true
+	}
+	return false
 }

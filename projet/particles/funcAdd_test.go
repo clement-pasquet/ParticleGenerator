@@ -7,6 +7,7 @@ import (
 	"container/list"
 	// "time"
 	// "math/rand"
+	"project-particles"
 )
 
 
@@ -78,6 +79,7 @@ func Test_LifeSpanIsTooAged(t *testing.T) {
 	if config.General.RandomSpawn == true && float64(myParticule.LifeSpan)/60 >= config.General.LifeSpanMax+1 {
 		t.Error("ATTENTION, IL EXISTE AU MOINS UNE PARTICULE PLUS VIEUX QUE", config.General.LifeSpanMax,"SECONDES")
 	}
+	
 }
 /*
 func TestPlusieurs(t *testing.T) {

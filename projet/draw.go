@@ -7,7 +7,9 @@ import (
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 	"fmt"
+	
 	//"container/list"
+	
 
 )
 
@@ -15,6 +17,8 @@ import (
 // g.system. Elle est appelée automatiquement environ 60 fois par seconde par
 // la bibliothèque Ebiten. Cette fonction pourra être légèrement modifiée quand
 // c'est précisé dans le sujet.
+particulesMortes := list.New()
+
 func (g *game) Draw(screen *ebiten.Image) {
 
 	for e := g.system.Content.Front(); e != nil; e = e.Next() {
@@ -26,18 +30,17 @@ func (g *game) Draw(screen *ebiten.Image) {
 			options.GeoM.Translate(p.PositionX, p.PositionY)
 			options.ColorM.Scale(p.ColorRed, p.ColorGreen, p.ColorBlue, p.Opacity)
 			screen.DrawImage(assets.ParticleImage, &options)
+			fmt.Println("aaaaa",e)
+			if IsOutOfView(e,p,g.system.Content){ //Re
+				particulesMortes.PushFront(e)
+			}
+			
 
-		}
-		
-		if config.General.WindowSizeX + int(config.General.Margin) < int(p.PositionX)  || p.PositionX< -config.General.Margin|| config.General.WindowSizeY*2 + int(config.General.Margin)<int(p.PositionY) {//Bug !
-			p.Opacity=0
-			g.system.Content.Remove(e)
-				
-				
 		}
 		
 		
 	}
+	
 
 	if config.General.Debug {
 		ebitenutil.DebugPrint(screen, fmt.Sprint(ebiten.CurrentTPS()))
