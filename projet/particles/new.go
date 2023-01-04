@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"math/rand"
 	"project-particles/config"
-	"strconv"
 	"time"
 )
 
@@ -25,19 +24,9 @@ func NewSystem() System {
 		var posY float64 = float64(config.General.SpawnY)
 		var speedX float64 = rand.Float64() * config.General.Velocity
 		var speedY float64 = rand.Float64() * config.General.Velocity
-		var s string = strconv.FormatInt(int64(i), 2)
-		var ns int = len(s)
-		if ns < 2 {
-			s = "00"
-		} else {
-			s = s[ns-2:]
-		}
-		if string(s[0]) == "1" {
-			speedX = speedX * -1
-		}
-		if string(s[1]) == "1" {
-			speedY = speedY * -1
-		}
+		var signe []int = []int{-1, 1}
+		speedX = speedX * float64(signe[rand.Intn(2)])
+		speedY = speedY * -1
 
 		if config.General.RandomSpawn {
 			posX = float64(rand.Intn(config.General.WindowSizeX))
@@ -47,6 +36,7 @@ func NewSystem() System {
 		l.PushFront(&Particle{
 			PositionX: float64(posX),
 			PositionY: float64(posY),
+			Rotation:0.5,
 			ScaleX:    config.General.ScaleX, ScaleY: config.General.ScaleY, //Partie à remplacer
 			ColorRed: config.General.ColorRed / 255, ColorGreen: config.General.ColorGreen / 255, ColorBlue: config.General.ColorBlue / 255,
 			Opacity: config.General.Opacity,

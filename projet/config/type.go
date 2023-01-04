@@ -22,7 +22,8 @@ type Config struct {
 	ColorRed                 float64
 	ColorBlue                float64
 	ColorGreen               float64
-	Velocity                 float64
+	Velocity                 float64 //Gerer vitesse x et y 
+	Margin 					 float64 //Correspond à la marge extérieur et qui sert à supprimer les particules une fois hors-champ
 }
 
 var General Config

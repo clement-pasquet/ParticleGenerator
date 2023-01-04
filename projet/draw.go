@@ -5,6 +5,10 @@ import (
 	"project-particles/particles"
 	"project-particles/config"
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
+	"fmt"
+	//"container/list"
+
 )
 
 // Draw se charge d'afficher à l'écran l'état actuel du système de particules
@@ -22,13 +26,23 @@ func (g *game) Draw(screen *ebiten.Image) {
 			options.GeoM.Translate(p.PositionX, p.PositionY)
 			options.ColorM.Scale(p.ColorRed, p.ColorGreen, p.ColorBlue, p.Opacity)
 			screen.DrawImage(assets.ParticleImage, &options)
-			if config.General.WindowSizeX < int(p.PositionX) || p.PositionX< -10 || config.General.WindowSizeY<int(p.PositionY){
-				g.system.Content.Remove(e)
+
+		}
+		fmt.Println(p.PositionY)
+		if config.General.WindowSizeX + int(config.General.Margin) < int(p.PositionX)  || p.PositionX< -config.General.Margin|| config.General.WindowSizeY*2 + int(config.General.Margin)<int(p.PositionY) {//Bug !
+			p.Opacity=0
+			g.system.Content.Remove(e)
+				
+				
 		}
 		
-		}
+		
 	}
 
+	if config.General.Debug {
+		ebitenutil.DebugPrint(screen, fmt.Sprint(ebiten.CurrentTPS()))
+
+	}
 }
 
 /*rand.Seed(time.Now().UnixNano())
@@ -44,6 +58,4 @@ for e := g.system.Content.Front(); e != nil; e = e.Next() {
 	}
 }
 
-if config.General.Debug {
-	ebitenutil.DebugPrint(screen, fmt.Sprint(ebiten.CurrentTPS()))
 }*/
