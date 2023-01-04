@@ -8,14 +8,16 @@
 	"RandomSpawn": false,
 	"SpawnX": 640,
 	"SpawnY": 360,
-	"SpawnRate": 20,
+	"SpawnRate": 200,
 	"ColorRed": 1,
 	"ColorGreen": 1 ,
 	"ColorBlue": 1,
-	"ScaleX": 0.75,
-	"ScaleY": 0.75,
+	"ScaleX": 0.0275,
+	"ScaleY": 0.0175,
 	"Opacity": 1,
 	"Velocity": 5,
-	"Margin": 20
+	"Margin": 20,
+	"Flag": 6,
+	"LifeSpanMax":2
 }
 

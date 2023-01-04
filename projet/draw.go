@@ -28,7 +28,7 @@ func (g *game) Draw(screen *ebiten.Image) {
 			screen.DrawImage(assets.ParticleImage, &options)
 
 		}
-		fmt.Println(p.PositionY)
+		
 		if config.General.WindowSizeX + int(config.General.Margin) < int(p.PositionX)  || p.PositionX< -config.General.Margin|| config.General.WindowSizeY*2 + int(config.General.Margin)<int(p.PositionY) {//Bug !
 			p.Opacity=0
 			g.system.Content.Remove(e)
