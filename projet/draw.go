@@ -1,23 +1,19 @@
 package main
 
 import (
+	"fmt"
 	"project-particles/assets"
-	"project-particles/particles"
 	"project-particles/config"
+	"project-particles/particles"
+
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
-	"fmt"
-	
-	//"container/list"
-	
-
 )
 
 // Draw se charge d'afficher à l'écran l'état actuel du système de particules
 // g.system. Elle est appelée automatiquement environ 60 fois par seconde par
 // la bibliothèque Ebiten. Cette fonction pourra être légèrement modifiée quand
 // c'est précisé dans le sujet.
-particulesMortes := list.New()
 
 func (g *game) Draw(screen *ebiten.Image) {
 
@@ -30,18 +26,8 @@ func (g *game) Draw(screen *ebiten.Image) {
 			options.GeoM.Translate(p.PositionX, p.PositionY)
 			options.ColorM.Scale(p.ColorRed, p.ColorGreen, p.ColorBlue, p.Opacity)
 			screen.DrawImage(assets.ParticleImage, &options)
-			fmt.Println("aaaaa",e)
-			if IsOutOfView(e,p,g.system.Content){ //Re
-				particulesMortes.PushFront(e)
-			}
-			
-
 		}
-		
-		
 	}
-	
-
 	if config.General.Debug {
 		ebitenutil.DebugPrint(screen, fmt.Sprint(ebiten.CurrentTPS()))
 

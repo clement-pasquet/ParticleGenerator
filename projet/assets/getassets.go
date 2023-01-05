@@ -1,11 +1,11 @@
 package assets
 
 import (
-	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
-	_ "image/png"
 	"log"
 	"project-particles/config"
+
+	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
 
 // ParticleImage est une variable globale pour stocker l'image d'une particule

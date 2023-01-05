@@ -20,5 +20,5 @@ type Particle struct {
 	ColorRed, ColorGreen, ColorBlue float64
 	Opacity                         float64
 	SpeedX, SpeedY                  float64
-	LifeSpan						int		//Durée de vie en 1/60e de seconde --> 60 LifeSpan = 1 seconde
+	LifeSpan                        int //Durée de vie en 1/60e de seconde --> 60 LifeSpan = 1 seconde
 }

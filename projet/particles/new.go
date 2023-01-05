@@ -33,16 +33,17 @@ func NewSystem() System {
 			posY = float64(rand.Intn(config.General.WindowSizeY))
 
 		}
+
 		l.PushFront(&Particle{
 			PositionX: float64(posX),
 			PositionY: float64(posY),
-			Rotation:0.5,
+			Rotation:  0.5,
 			ScaleX:    config.General.ScaleX, ScaleY: config.General.ScaleY, //Partie à remplacer
 			ColorRed: config.General.ColorRed / 255, ColorGreen: config.General.ColorGreen / 255, ColorBlue: config.General.ColorBlue / 255,
-			Opacity: config.General.Opacity,
-			SpeedX:  speedX,
-			SpeedY:  speedY,
-			LifeSpan:1,
+			Opacity:  config.General.Opacity,
+			SpeedX:   speedX,
+			SpeedY:   speedY,
+			LifeSpan: 1,
 		})
 	}
 
