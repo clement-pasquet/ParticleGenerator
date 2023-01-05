@@ -15,13 +15,13 @@
 	"ScaleX": 0.22,
 	"ScaleY": 0.22,
 	"Opacity": 1,
-	"Velocity": 0,
-	"Gravity": 0,
+	"Velocity": 0.5,
+	"Gravity": 0.5,
 	"Margin": 100,
 	"Flag": 0,
 	"LifeSpanMax":30,
 	"GeneratorShape":"gigachad",
 	"CustomImageBool":true,
-	"CustomImageSRC":"assets/bobby2.png"
+	"CustomImageSRC":"assets/gigachad.png"
 }
 

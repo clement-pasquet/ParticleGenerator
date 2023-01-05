@@ -83,10 +83,11 @@ func Test_LifeSpanIsTooAged(t *testing.T) {
 func Test_createNParticles(t *testing.T) {
 	var a float64 = 100
 	var myList *list.List = list.New()
-	myList2 := createNParticles(int(a), myList)
+	var myList2 *list.List = list.New()
+	myList2 = createNParticles(int(a), myList2)
 	fmt.Println(myList, myList2)
 
-	if myList == myList2 {
+	if myList.Len() == myList2.Len() {
 		t.Errorf("ATTENTION, createNParticles ne crée pas le bon nombre de particules")
 	}
 
