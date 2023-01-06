@@ -33,18 +33,3 @@ func (g *game) Draw(screen *ebiten.Image) {
 
 	}
 }
-
-/*rand.Seed(time.Now().UnixNano())
-for e := g.system.Content.Front(); e != nil; e = e.Next() {
-	p, ok := e.Value.(*particles.Particle)
-	if ok {
-		options := ebiten.DrawImageOptions{}
-		options.GeoM.Rotate(float64(rand.Intn(50)))
-		options.GeoM.Scale(float64(rand.Intn(10)),float64(rand.Intn(10)))
-		options.GeoM.Translate(p.PositionX+float64(rand.Intn(1280)-640), p.PositionY+float64(rand.Intn(720)-360))
-		options.ColorM.Scale(float64(rand.Intn(100)), float64(rand.Intn(100)), float64(rand.Intn(100)), float64(rand.Intn(10))/10)
-		screen.DrawImage(assets.ParticleImage, &options)
-	}
-}
-
-}*/

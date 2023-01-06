@@ -1,6 +1,6 @@
 # Gestion de Particule
 
-
+![Image de Bobby](projet/assets/ .jpg "Bobby")
 
 ## Getting started
 
