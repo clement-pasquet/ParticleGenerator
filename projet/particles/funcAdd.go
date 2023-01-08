@@ -13,6 +13,11 @@ func puissance2(a float64) float64 {
 
 func createNParticles(nb int, l *list.List) *list.List {
 
+	/*
+		nb : un entier représentant le nombre de particule souhaitant être créée
+		l : une liste de particule
+		Cette fonction sert à ajouter nb nouvelles particules à la liste l */
+
 	rand.Seed(time.Now().UnixNano())
 
 	for i := 0; i < nb; i++ {
@@ -25,14 +30,15 @@ func createNParticles(nb int, l *list.List) *list.List {
 		speedY = speedY * float64(signe[rand.Intn(2)])
 
 		if config.General.RandomSpawn { //Appelle la fonction RandomSpawn si le paramètre "RandomSpawn" de config.json est mis à true
-			posX, posY = RandomSpawnFunc(posX, posY)
+			posX = float64(rand.Intn(config.General.WindowSizeX))
+			posY = float64(rand.Intn(config.General.WindowSizeY))
 		}
 
 		p := &Particle{
 			PositionX: float64(posX),
 			PositionY: float64(posY),
 			ScaleX:    config.General.ScaleX, ScaleY: config.General.ScaleY,
-			//Comme nos couleurs de notre config.json sont en 8 bits, nous les divisons par 255 pour avoir une valeur entre 0 et 1
+			//Pour pouvoir écrire nos couleur RGB avec des valeurs comprisent entre 0 et 255, nous les divisons par 255 pour avoir une valeur entre 0 et 1
 			ColorRed: config.General.ColorRed / 255, ColorGreen: config.General.ColorGreen / 255, ColorBlue: config.General.ColorBlue / 255,
 			Opacity: config.General.Opacity,
 			SpeedX:  speedX,
@@ -41,10 +47,4 @@ func createNParticles(nb int, l *list.List) *list.List {
 		l.PushFront(p)
 	}
 	return l
-}
-
-func RandomSpawnFunc(posX float64, posY float64) (float64, float64) { //Génère les particules à un endroit non aléatoire, au centre de l'écran
-	posX = float64((config.General.WindowSizeX) / 2)
-	posY = float64((config.General.WindowSizeY) / 2)
-	return posX, posY
 }
