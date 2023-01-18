@@ -1,6 +1,7 @@
 package main
 
 import (
+	"container/list"
 	"log"
 	"project-particles/assets"
 	"project-particles/config"
@@ -16,14 +17,15 @@ import (
 // charge de faire les mise-à-jour (Update) et affichages (Draw) de manière
 // régulière.
 func main() {
-
 	config.Get("config.json")
 	assets.Get()
+	GetBtn()
 
-	ebiten.SetWindowTitle(config.General.WindowTitle)
-	ebiten.SetWindowSize(config.General.WindowSizeX, config.General.WindowSizeY)
+	ebiten.SetWindowTitle("Menu")
+	ebiten.SetWindowSize(1280, 720)
+	var l *list.List = list.New()
 
-	g := game{system: particles.NewSystem()}
+	g := game{system: particles.System{Content: l}} //system: particles.NewSystem()}
 
 	err := ebiten.RunGame(&g)
 	if err != nil {

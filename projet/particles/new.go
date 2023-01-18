@@ -2,6 +2,7 @@ package particles
 
 import (
 	"container/list"
+	"fmt"
 	"math/rand"
 	"project-particles/config"
 	"time"
@@ -14,8 +15,12 @@ import (
 // centre de l'écran.
 func NewSystem() System {
 	l := list.New()
-	rand.Seed(time.Now().UnixNano())
-	createNParticles(config.General.InitNumParticles, l)
 
-	return System{Content: l}
+	fmt.Println(l)
+
+	rand.Seed(time.Now().UnixNano())
+	var s System = System{Content: l}
+	createNParticles(config.General.InitNumParticles,&s)
+
+	return s
 }

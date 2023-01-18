@@ -1,0 +1,60 @@
+{
+	"WindowTitle": "Projet Particules - Bryan & Clément",
+	"WindowSizeX": 1280,
+    "WindowSizeY": 720,
+	"ParticleImage": "assets/particle2.png",
+	"Debug": true,
+	"InitNumParticles": 1000,
+	"RandomSpawn": false,
+	"SpawnX": 640,
+	"SpawnY": 360,
+
+	"SpawnRate":300,
+	"ColorRed": 55,
+	"ColorGreen": 255 ,
+	"ColorBlue": 55,
+
+	"ScaleX": 0.4,
+	"ScaleY": 0.4,
+	"Opacity": 0.85,
+
+	"Velocity": 2,
+	"Gravity": 0.4,
+
+	"Margin": 200,
+	"Flag": 0,
+	"LifeSpanMax":5,
+	"GeneratorShape":"",
+	"CustomImageBool":false,
+	"CustomImageSRC":"assets/cccp.png",
+	"Collision":false,
+	"SizeShape":2,
+	"MouseClick":true,
+	
+
+	"GeneratorShape":"cercle",
+	"SizeShape":5,
+
+
+	"LifeSpanMax":2,
+	"Gravity":0,
+	"WindowSizeY": 720,
+	"ParticleImage": "assets/particle2.png", 
+	"Debug": true,
+	
+	"InitNumParticles": 50,
+	"RandomSpawn": false,
+	"SpawnX": 640,
+	"SpawnY": 360,
+	"SpawnRate":0.9,
+	"SpawnRate":35,
+	"ColorRed": 43,
+	"ColorGreen": 0 ,
+	"ColorGreen": 255 ,
+	"ColorBlue": 255,
+	
+	"ScaleX": 0.5,
+	"ScaleY": 0.5,
+	"Opacity": 1,
+	"Velocity": 2
+}

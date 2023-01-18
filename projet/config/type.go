@@ -23,6 +23,18 @@ type Config struct {
 	ColorBlue                float64
 	ColorGreen               float64
 	Velocity                 float64 //Gere la vitesse horizontale et verticale
+	Gravity                  float64 //correspond à la force qui va attirer les particules vers le bas
+	Margin                   float64 //Correspond à la marge extérieur et qui sert à supprimer les particules une fois hors-champ
+	Flag                     int     //Permet d'afficher à l'écran un des 10 drapeaux aux choix parmi le drapeau FR,IT,IR,BEL,RO,IN,DE,JAP,RU,UA
+	LifeSpanMax              float64 //Durée de vie de chaque particule avant de mourir
+	GeneratorShape           string  //Change la forme auxquels les particules apparaissent, ex = "rond","carre","rectangle" ou "" si vous ne voulez pas de forme
+	CustomImageBool          bool    //Est ce qu'il faut afficher une image grace au système de particules ?
+	CustomImageSRC           string  //Quel est le chemin relatif de notre image à afficher ?
+	Collision                bool    //Doit on activer les collisions avec les murs ?
+	SizeShape                float64 //De quel taille doit être la forme du générateur ?
+	MouseClick               bool    //Faut il activer le fait de faire apparaitre des particules avec le clique gauche ?
 }
 
 var General Config
+
+var HasGameStarted bool = false
