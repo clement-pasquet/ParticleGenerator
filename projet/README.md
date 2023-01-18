@@ -6,7 +6,7 @@ Le but est de créer un générateur de particule.
 
 Ce générateur de particule pourra servir à créer **différents effets complexes** (explosions, feu, pluies ...) et sera complété par différentes "extensions" tel que l'ajout de la gravité, d'une "durée de vie" à chaque particule, d'un "générateur de forme" pour générer des particules sur une forme carré, rectangulaire, ronde; de collisions, d'une interface pour changer les paramètres en cours et de plusieurs optimisation mémoire.
 
-![Image de teraria](assets/earthproject.png)
+![Image de teraria](assets/Earthproject.png)
 ## Utiliser notre programme
 
 Pour lancer notre programme, il suffit de lancer le fichier "project-particles" sous Linux avec la commande : 
