@@ -8,6 +8,7 @@ import (
 	"project-particles/config"
 	"project-particles/particles"
 	"strconv"
+	"strings"
 
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
@@ -46,6 +47,9 @@ var EntryLifeSpan EntryText
 var EntryCustomImageSRC EntryText
 
 var IsInitialised bool
+
+var KeyStringNew string
+var temp int = 0
 
 type EntryText struct {
 	isBeingModified bool
@@ -347,34 +351,202 @@ func ShowEntry(screen *ebiten.Image, entry *EntryText) {
 	screen.DrawImage(Entry, &options)
 
 	if entry.isBeingModified {
-		a := entry.text
-		particles.KeyboardInput()
+		if temp == 0 {
+			a := entry.text
+			KeyboardInput()
+			entry.text = KeyStringNew
 
-		fmt.Println(len(entry.text) - len(a))
-
-		entry.text = particles.KeyStringNew
-		if len(entry.text) > 0 {
-			if entry.text[len(entry.text)-1] == '#' { //Si l'utilisateur a appuyé sur "Entrée", alors la valeur qu'il a inscrit est conservé
-				entry.text = particles.KeyStringNew[:len(entry.text)-1]
-				particles.KeyStringNew = ""
-				EntryFocus = false
-				entry.isBeingModified = false
-
-			} else if entry.text[len(entry.text)-1] == '^' { //Si l'utilisateur a appuyé sur "Echap", alors on remet le texte d'origine du champ-texte.
-				entry.text = entry.oldText
-				particles.KeyStringNew = ""
-				EntryFocus = false
-				entry.isBeingModified = false
-				return
-
+			if (len(entry.text) - len(a)) != 0 {
+				temp++
 			}
+
+			if len(entry.text) > 0 {
+				if entry.text[len(entry.text)-1] == '#' { //Si l'utilisateur a appuyé sur "Entrée", alors la valeur qu'il a inscrit est conservé
+					entry.text = KeyStringNew[:len(entry.text)-1]
+					KeyStringNew = ""
+					EntryFocus = false
+					entry.isBeingModified = false
+
+				} else if entry.text[len(entry.text)-1] == '^' { //Si l'utilisateur a appuyé sur "Echap", alors on remet le texte d'origine du champ-texte.
+					entry.text = entry.oldText
+					KeyStringNew = ""
+					EntryFocus = false
+					entry.isBeingModified = false
+					return
+
+				}
+			}
+
+			text.Draw(screen, entry.text, mplusNormalFont, int(entry.posX)+10, int(entry.posY)+18, color.Black)
+		} else if temp < 10 {
+			temp++
+		} else {
+			temp = 0
 		}
-
-		text.Draw(screen, entry.text, mplusNormalFont, int(entry.posX)+10, int(entry.posY)+18, color.Black)
-
 	} else {
 		entry.oldText = entry.text
 		text.Draw(screen, entry.text, mplusNormalFont, int(entry.posX)+10, int(entry.posY)+18, color.Black)
 
 	}
+}
+
+func KeyboardInput() {
+
+	var key string
+	if inpututil.IsKeyJustPressed(ebiten.KeyDigit0) || inpututil.IsKeyJustPressed(ebiten.Key0) || inpututil.IsKeyJustPressed(ebiten.KeyNumpad0) {
+		key = "0"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyDigit1) || inpututil.IsKeyJustPressed(ebiten.Key1) || inpututil.IsKeyJustPressed(ebiten.KeyNumpad1) {
+		key = "1"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyDigit2) || inpututil.IsKeyJustPressed(ebiten.Key2) || inpututil.IsKeyJustPressed(ebiten.KeyNumpad2) {
+		key = "2"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyDigit3) || inpututil.IsKeyJustPressed(ebiten.Key3) || inpututil.IsKeyJustPressed(ebiten.KeyNumpad3) {
+		key = "3"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyDigit4) || inpututil.IsKeyJustPressed(ebiten.Key4) || inpututil.IsKeyJustPressed(ebiten.KeyNumpad4) {
+		key = "4"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyDigit5) || inpututil.IsKeyJustPressed(ebiten.Key5) || inpututil.IsKeyJustPressed(ebiten.KeyNumpad5) {
+		key = "5"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyDigit6) || inpututil.IsKeyJustPressed(ebiten.Key6) || inpututil.IsKeyJustPressed(ebiten.KeyNumpad6) {
+		key = "6"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyDigit7) || inpututil.IsKeyJustPressed(ebiten.Key7) || inpututil.IsKeyJustPressed(ebiten.KeyNumpad7) {
+		key = "7"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyDigit8) || inpututil.IsKeyJustPressed(ebiten.Key8) || inpututil.IsKeyJustPressed(ebiten.KeyNumpad8) {
+		key = "8"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyDigit9) || inpututil.IsKeyJustPressed(ebiten.Key9) || inpututil.IsKeyJustPressed(ebiten.KeyNumpad9) {
+		key = "9"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyA) {
+		key = "q"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyB) {
+		key = "b"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyC) {
+		key = "c"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyD) {
+		key = "d"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyE) {
+		key = "e"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyF) {
+		key = "f"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyG) {
+		key = "g"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyH) {
+		key = "h"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyI) {
+		key = "i"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyJ) {
+		key = "j"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyK) {
+		key = "k"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyL) {
+		key = "l"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyM) {
+		key = "m"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyN) {
+		key = "n"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyO) {
+		key = "o"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyP) {
+		key = "p"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyQ) {
+		key = "a"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyR) {
+		key = "r"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyS) {
+		key = "s"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyT) {
+		key = "t"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyU) {
+		key = "u"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyV) {
+		key = "v"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyW) {
+		key = "w"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyX) {
+		key = "x"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyY) {
+		key = "y"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyZ) {
+		key = "z"
+	}
+
+	for x := 'a'; x < 'z'; x++ {
+		if key == string(x) {
+			if ebiten.IsKeyPressed(ebiten.KeyShiftLeft) || ebiten.IsKeyPressed(ebiten.KeyShiftRight) {
+				key = strings.ToUpper(key)
+			}
+			KeyStringNew = KeyStringNew + key
+			break
+		}
+	}
+
+	if inpututil.IsKeyJustPressed(ebiten.KeyEnter) {
+		key = "enter"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyEscape) {
+		key = "escape"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyBackspace) {
+		key = "backspace"
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyComma) {
+		key = "."
+	}
+
+	if inpututil.IsKeyJustPressed(ebiten.KeyNumpadDivide) {
+		key = "/"
+	}
+	if len(ebiten.InputChars()) > 0 {
+		if ebiten.InputChars()[len(ebiten.InputChars())-1] == '/' {
+			key = "/"
+		}
+	}
+
+	if key == "/" || key == "0" || key == "1" || key == "2" || key == "3" || key == "4" || key == "5" || key == "6" || key == "7" || key == "8" || key == "9" || key == "." {
+		KeyStringNew = KeyStringNew + key
+	}
+	if key == "backspace" { //si on appuie sur la touche retour arrière ( la flèche qui pointe vers la gauche), on supprime le dernier élément du string
+		if len(KeyStringNew) >= 1 {
+			KeyStringNew = string(KeyStringNew[:len(KeyStringNew)-1])
+		}
+	}
+	if key == "escape" {
+		KeyStringNew = KeyStringNew + "^"
+	}
+	if key == "enter" {
+		KeyStringNew = KeyStringNew + "#"
+	}
+
 }
