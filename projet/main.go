@@ -17,7 +17,7 @@ import (
 // charge de faire les mise-à-jour (Update) et affichages (Draw) de manière
 // régulière.
 func main() {
-	config.Get("config9.json")
+	config.Get("config.json")
 	assets.Get()
 	GetBtn()
 
